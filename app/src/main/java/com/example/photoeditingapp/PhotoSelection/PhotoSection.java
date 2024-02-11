@@ -1,13 +1,20 @@
 package com.example.photoeditingapp.PhotoSelection;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.photoeditingapp.Assets.Toolbars;
 import com.example.photoeditingapp.Assets.Utils;
 import com.example.photoeditingapp.R;
@@ -17,7 +24,11 @@ public class PhotoSection extends AppCompatActivity {
     Utils utils;
     Toolbar toolbar;
     Toolbars toolbars;
-    GlowButton photo;
+    GlowButton photo, gallery, filter;
+    ImageView filterImage;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_PICK = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +42,67 @@ public class PhotoSection extends AppCompatActivity {
     private void getIds() {
         utils = new Utils(PhotoSection.this);
         toolbar = findViewById(R.id.toolbar);
+        filterImage = findViewById(R.id.imageView);
         photo = findViewById(R.id.image);
+        gallery = findViewById(R.id.gallery);
+        filter = findViewById(R.id.filter);
         toolbars = new Toolbars();
         setSupportActionBar(toolbar);
         toolbars.setToolbarTitle("Home Page", toolbar);
     }
 
     public void uiFunction() {
+        Glide.with(PhotoSection.this).load(R.drawable.baseline_image_24).into(filterImage);
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 utils.cameraAndMediaPermissions(PhotoSection.this);
+                dispatchTakePictureIntent();
             }
         });
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                utils.cameraAndMediaPermissions(PhotoSection.this);
+                openGallery();
+            }
+        });
+    }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_IMAGE_PICK);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            filterImage.setImageBitmap(imageBitmap);
+            filter.setVisibility(View.VISIBLE);
+
+        } else if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+
+            Uri selectedImageUri = data.getData();
+            filterImage.setImageURI(selectedImageUri);
+            filter.setVisibility(View.VISIBLE);
+
+        } else {
+            utils.toast(PhotoSection.this, "Action canceled");
+        }
     }
 
     @Override
