@@ -23,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         getIDs();
-        Glide.with(SplashScreen.this).load(R.drawable.photo_image).into(homeScreenImage);
+        Glide.with(SplashScreen.this).load(R.drawable.toolbaricon).into(homeScreenImage);
         utils.statusBar(SplashScreen.this);
         Thread thread = new Thread(new Runnable() {
             @Override

@@ -42,4 +42,5 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.github.SanojPunchihewa:GlowButton:1.0.1")
+    implementation("com.polyak:icon-switch:1.0.0")
 }

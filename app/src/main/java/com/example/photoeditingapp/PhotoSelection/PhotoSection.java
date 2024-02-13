@@ -48,7 +48,7 @@ public class PhotoSection extends AppCompatActivity {
         filter = findViewById(R.id.filter);
         toolbars = new Toolbars();
         setSupportActionBar(toolbar);
-        toolbars.setToolbarTitle("Home Page", toolbar);
+        toolbars.setToolbarTitle(PhotoSection.this,"Generative Ai", toolbar);
     }
 
     public void uiFunction() {

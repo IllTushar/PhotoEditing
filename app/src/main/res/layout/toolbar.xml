@@ -2,11 +2,27 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/black"
-    android:gravity="center"
+    android:gravity="start"
+
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginEnd="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/toolbarIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
     <TextView
         android:id="@+id/toolbarTitle"
         android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    </LinearLayout>
 </androidx.appcompat.widget.Toolbar>

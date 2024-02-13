@@ -23,6 +23,7 @@
             android:layout_height="300dp"
             android:layout_margin="10dp"
             android:elevation="5dp"
+            android:visibility="gone"
             app:cardCornerRadius="20dp">
 
             <LinearLayout
@@ -33,13 +34,15 @@
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:weightSum="2">
 
             <com.sanojpunchihewa.glowbutton.GlowButton
@@ -87,5 +90,45 @@
             app:glowColor="@color/white"
             app:pressedGlowSize="25dp"
             app:unpressedGlowSize="20dp" />
+
+        <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/imageReconiztaion"
+            android:layout_width="200dp"
+            android:padding="10dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="50dp"
+            android:text="Text Recognition"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:buttonColor="@color/black"
+            app:cornerRadius="50dp"
+            app:glowColor="@color/white"
+            app:pressedGlowSize="10dp"
+            app:unpressedGlowSize="5dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/black"
+            android:padding="20dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/baseline_mic_24" />
+        <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/generative_image_ai"
+            android:layout_marginTop="50dp"
+            android:layout_width="200dp"
+            android:padding="10dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="50dp"
+            android:text="Ai Images"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:buttonColor="@color/black"
+            app:cornerRadius="50dp"
+            app:glowColor="@color/white"
+            app:pressedGlowSize="10dp"
+            app:unpressedGlowSize="5dp" />
     </LinearLayout>
 </LinearLayout>
