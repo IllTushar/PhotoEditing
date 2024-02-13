@@ -24,7 +24,7 @@ public class PhotoSection extends AppCompatActivity {
     Utils utils;
     Toolbar toolbar;
     Toolbars toolbars;
-    GlowButton photo, gallery, filter;
+    GlowButton photo, gallery, filter , textRecognition;
     ImageView filterImage;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_PICK = 2;
@@ -47,6 +47,7 @@ public class PhotoSection extends AppCompatActivity {
         gallery = findViewById(R.id.gallery);
         filter = findViewById(R.id.filter);
         toolbars = new Toolbars();
+        textRecognition=findViewById(R.id.imageReconiztaion);
         setSupportActionBar(toolbar);
         toolbars.setToolbarTitle(PhotoSection.this,"Generative Ai", toolbar);
     }
@@ -57,7 +58,7 @@ public class PhotoSection extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 utils.cameraAndMediaPermissions(PhotoSection.this);
-                dispatchTakePictureIntent();
+                //dispatchTakePictureIntent();
             }
         });
         gallery.setOnClickListener(new View.OnClickListener() {
@@ -67,14 +68,16 @@ public class PhotoSection extends AppCompatActivity {
                 openGallery();
             }
         });
+
+        textRecognition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             utils.Intent(PhotoSection.this,CaptureImage.class);
+            }
+        });
     }
 
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
+
 
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);

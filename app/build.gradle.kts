@@ -43,4 +43,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.github.SanojPunchihewa:GlowButton:1.0.1")
     implementation("com.polyak:icon-switch:1.0.0")
+
+    implementation("com.google.android.gms:play-services-vision:20.1.3")
+    implementation("com.theartofdev.edmodo:android-image-cropper:2.8.0")
 }
