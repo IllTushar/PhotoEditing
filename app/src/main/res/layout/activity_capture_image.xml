@@ -3,46 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:layout_height="match_parent"
     tools:context=".PhotoSelection.CaptureImage">
 
     <include
         android:id="@+id/toolbars"
         layout="@layout/toolbar" />
-    <TextView
-        android:id="@+id/text2"
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbars"
-        android:layout_above="@+id/cameraCapture"/>
+        android:layout_height="200dp"
+        android:layout_below="@+id/toolbars" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cameraCapture"
+        android:layout_below="@+id/imageView">
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:textSize="29dp" />
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/imageDetection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/black"
+        android:padding="20dp"
+        android:src="@drawable/baseline_find_in_page_24" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cameraCapture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/black"
         android:padding="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:src="@drawable/baseline_camera_24" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
         android:id="@+id/getAiExplaination"
         android:layout_width="200dp"
-        android:visibility="gone"
-        android:padding="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
+        android:padding="10dp"
         android:text="Get Ai Explaination"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:buttonColor="@color/black"
         app:cornerRadius="50dp"
         app:glowColor="@color/white"

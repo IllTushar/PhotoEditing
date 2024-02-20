@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654520955058",
+    "project_id": "photoeditingapp-1dcd6",
+    "storage_bucket": "photoeditingapp-1dcd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654520955058:android:ea731974adeb1b909399ab",
+        "android_client_info": {
+          "package_name": "com.example.photoeditingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTjNkgazTkGgtjXzgIpx4wJtMPJ_6pP4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
